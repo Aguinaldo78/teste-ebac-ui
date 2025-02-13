@@ -3,8 +3,10 @@ describe('funcionalidade: login', () => {
     beforeEach(() => {
         cy.visit ('http://lojaebac.ebaconline.art.br/minha-conta/')
     });
-    it ('deve fazer login com sucesso', () => {
-      
+      afterEach(() => {
+        cy.screenshot ()
+    });
+      it ('deve fazer login com sucesso', () => {
         cy.get('#username').type('aguinaldo.teste@gmail.com')
         cy.get('#password').type('123456')
         cy.get('.woocommerce-form > .button').click()
@@ -17,7 +19,7 @@ describe('funcionalidade: login', () => {
         cy.get('.woocommerce-error').should('contain' , 'Endereço de e-mail desconhecido. Verifique novamente ou tente seu nome de usuário.' )
         cy.get('.woocommerce-error').should ('exist')
     });
-    it ('Deve aparecer uma mensagem de erro ao insirir uma senha errada', () => {
+    it ('Deve aparecer uma mensagem de erro ao insirir uma senha invalida', () => {
         cy.get('#username').type('aguinaldo.teste@gmail.com')
         cy.get('#password').type('1234560')
         cy.get('.woocommerce-form > .button').click()
