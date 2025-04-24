@@ -3,9 +3,9 @@ describe('funcionalidade: login', () => {
     beforeEach(() => {
         cy.visit ('http://lojaebac.ebaconline.art.br/minha-conta/')
     });
-      afterEach(() => {
-        cy.screenshot ()
-    });
+     /// afterEach(() => {
+       /// cy.screenshot ()
+   /// });
       it ('deve fazer login com sucesso', () => {
         cy.get('#username').type('aguinaldo.teste@gmail.com')
         cy.get('#password').type('123456')
